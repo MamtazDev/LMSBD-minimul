@@ -1,51 +1,43 @@
 @extends('layouts.backend.backend-app')
-@section('title', 'Students')
+@section('title', 'Class Content')
 @section('content')
 <div class="row mt-5">
     <div class="col-md-12 m-auto">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active">Student</li>
+                <li class="breadcrumb-item active">Class</li>
             </ol>
           </nav>
         <div class="card p-3 mt-4">
             <div class="category_title my-3 d-flex justify-content-between">
                <div class="left">
-                    <h3>Student List</h3>
+                    <h3>Class List</h3>
                </div>
                <div class="right">
-                    <a class="btn btn-primary" href="{{ route('student.create') }}">Add New Student</a>
+                    <a class="btn btn-primary" href="{{ route('class-content.create') }}">Add New Class</a>
                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
                     <thead>
-                    <tr>
+                      <tr>
                         <th scope="col">SL No</th>
-                        <th scope="col">Course</th>
-                        <th scope="col">Student Name</th>
-                        <th scope="col">User Name</th>
-                        <th scope="col">Student Email</th>
-                        <th scope="col">Student Phone</th>
-                        <th scope="col">Student Image</th>
+                        <th scope="col">Course Name</th>
+                        <th scope="col">Video URl</th>
+                        <th scope="col">Class Text</th>
                         <th scope="col">Action</th>
-                    </tr>
+                      </tr>
                     </thead>
                     <tbody>
-                        @foreach ($student as $items)
+                        @foreach ($class as $items)
                         <tr>
                             <td>{{ $loop->index+1 }}</td>
                             <td>{{ $items->course->course_name }}</td>
-                            <td>{{ $items->student_name }}</td>
-                            <td>{{ $items->username }}</td>
-                            <td>{{ $items->student_email }}</td>
-                            <td>{{ $items->student_phone }}</td>
+                            <td>{{ $items->class_video }}</td>
+                            <td>{{ $items->class_text }}</td>
                             <td>
-                                <img width="100px" height="100px" src="{{ (!empty($items->student_image)) ? asset($items->student_image): asset('backend/assets/uploads/default.jpg') }}" alt="image">
-                            </td>
-                            <td>
-                                <a href="{{ route('student.edit', $items->id) }}" class="btn btn-success">Edit</a>
+                                <a href="{{ route('class-content.edit', $items->id) }}" class="btn btn-success">Edit</a>
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{ $items->id }}">Delete</a>
                             </td>
                         </tr>
@@ -64,7 +56,7 @@
                                         <div class="row">
                                             <div class="text-center">
                                                 <a href="javascript:void(0)" class="btn btn-white me-2" data-bs-dismiss="modal">Cancel</a>
-                                                <a href="{{ route('student.delete', $items->id) }}" class="btn btn-danger">Delete</a>
+                                                <a href="{{ route('class.content.delete', $items->id) }}" class="btn btn-danger">Delete</a>
                                             </div>
                                         </div>
                                     </div>

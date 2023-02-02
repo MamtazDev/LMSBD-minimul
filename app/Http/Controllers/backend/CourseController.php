@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -60,7 +61,9 @@ class CourseController extends Controller
         $course->course_duration = $request->course_duration;
         $course->start_date = $request->start_date;
         $course->status = $request->status;
-        $course->thumbnail = $final_image ?? 'backend/assets/uploads/default.jpg';
+        if(!empty($final_image)){
+            $course->thumbnail = $final_image;
+        }
         $course->save();
 
         return redirect()->route('courses.index')->with('success', 'Course create successfully');
@@ -107,15 +110,17 @@ class CourseController extends Controller
         $course = Course::findOrFail($id);
 
         if($request->file('thumbnail'))
-       {
-            unlink($course->thumbnail);
+        {
+            if(file_exists($course->thumbnail)){
+                unlink($course->thumbnail);
+            }
             $image = $request->file('thumbnail');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             $location = 'backend/assets/uploads/course/';
             $final_image = $location.$name_gen;
             Image::make($image)->save($final_image);
             $course->thumbnail = $final_image;
-       }
+        }
 
         $course->course_name = $request->course_name;
         $course->course_duration = $request->course_duration;
@@ -135,15 +140,18 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        $course = Course::findOrFail($id);
+        $student = Student::where('course_id', $id)->count();
 
-        if($course->thumbnail !== 'backend/assets/uploads/default.jpg'){
-            unlink($course->thumbnail);
-            $course->delete();
+        if($student > 0){
+            return redirect()->back()->with('fail', 'Student is enroll in this course ');
         }else{
+            $course = Course::findOrFail($id);
+            if($course->thumbnail){
+                unlink($course->thumbnail);
+            }
             $course->delete();
+            return redirect()->back()->with('success', 'Course delete successfully');
         }
 
-        return redirect()->back()->with('success', 'Course delete successfully');
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\backend\{
+    Class_contentController,
     CourseController,
     ProfileController,
     StudentController
@@ -32,3 +33,7 @@ Route::get('courses/delete/{id}', [CourseController::class, 'destroy'])->name('c
 //Student Route
 Route::resource('student', StudentController::class);
 Route::get('student/delete/{id}', [StudentController::class, 'destroy'])->name('student.delete');
+
+//Class_content Route
+Route::resource('class-content', Class_contentController::class);
+Route::get('class-content/delete/{id}', [Class_contentController::class, 'destroy'])->name('class.content.delete');

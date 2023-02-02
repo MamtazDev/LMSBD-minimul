@@ -48,7 +48,7 @@
 
                 <div class="col-md-12">
                     <div class="form-check form-switch">
-                        <input class="form-check-input form-control" type="checkbox" value="on" name="status" role="switch" id="flexSwitchCheckDefault">
+                        <input class="form-check-input form-control" type="checkbox"  {{  ($course->status == 'on' ? ' checked' : '') }} name="status" role="switch" id="flexSwitchCheckDefault">
                         <label class="form-label" for="flexSwitchCheckDefault">Status</label>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
 
                 <div class="form-group">
                     <label for="form-label"></label>
-                    <img width="100px" height="100px" id="img" src="{{ asset($course->thumbnail) }}" >
+                    <img width="100px" height="100px" id="img" src="{{ (!empty($course->thumbnail))? url($course->thumbnail):url('backend/assets/uploads/default.jpg') }}">
                 </div>
 
                 <div class="col-md-12">

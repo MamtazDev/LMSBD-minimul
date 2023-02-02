@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('course_duration');
             $table->string('start_date');
             $table->string('status')->nullable();
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }

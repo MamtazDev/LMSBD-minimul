@@ -51,146 +51,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex country">
-                                <a class="nav-link icon text-center" data-bs-target="#country-selector"
-                                    data-bs-toggle="modal">
-                                    <i class="fe fe-globe"></i><span
-                                        class="fs-16 ms-2 d-none d-xl-block">English</span>
-                                </a>
-                            </div>
-                            <!-- COUNTRY -->
+
                             <div class="d-flex country">
                                 <a class="nav-link icon theme-layout nav-link-bg layout-setting">
                                     <span class="dark-layout"><i class="fe fe-moon"></i></span>
                                     <span class="light-layout"><i class="fe fe-sun"></i></span>
                                 </a>
                             </div>
-                            <!-- Theme-Layout -->
-                            <div class="dropdown  d-flex shopping-cart">
-                                <a class="nav-link icon text-center" data-bs-toggle="dropdown">
-                                    <i class="fe fe-shopping-cart"></i><span class="badge bg-secondary header-badge">4</span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <div class="drop-heading border-bottom">
-                                        <div class="d-flex">
-                                            <h6 class="mt-1 mb-0 fs-16 fw-semibold text-dark"> My Shopping Cart</h6>
-                                            <div class="ms-auto">
-                                                <span class="badge bg-danger-transparent header-badge text-danger fs-14">Hurry Up!</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="header-dropdown-list message-menu">
-                                        <div class="dropdown-item d-flex p-4">
-                                            <a href="cart.html" class="open-file"></a>
-                                            <span
-                                                class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/pngs/4.jpg"></span>
-                                            <div class="wd-50p">
-                                                <h5 class="mb-1">Flower Pot for Home Decor</h5>
-                                                <span>Status: <span class="text-success">In Stock</span></span>
-                                                <p class="fs-13 text-muted mb-0">Quantity: 01</p>
-                                            </div>
-                                            <div class="ms-auto text-end d-flex fs-16">
-                                                <span class="fs-16 text-dark d-none d-sm-block px-4">
-                                                    $438
-                                                </span>
-                                                <a href="javascript:void(0)" class="fs-16 btn p-0 cart-trash">
-                                                    <i class="fe fe-trash-2 border text-danger brround d-block p-2"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-item d-flex p-4">
-                                            <a href="cart.html" class="open-file"></a>
-                                            <span
-                                                class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/pngs/6.jpg"></span>
-                                            <div class="wd-50p">
-                                                <h5 class="mb-1">Black Digital Camera</h5>
-                                                <span>Status: <span class="text-danger">Out Stock</span></span>
-                                                <p class="fs-13 text-muted mb-0">Quantity: 06</p>
-                                            </div>
-                                            <div class="ms-auto text-end d-flex">
-                                                <span class="fs-16 text-dark d-none d-sm-block px-4">
-                                                    $867
-                                                </span>
-                                                <a href="javascript:void(0)" class="fs-16 btn p-0 cart-trash">
-                                                    <i class="fe fe-trash-2 border text-danger brround d-block p-2"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-item d-flex p-4">
-                                            <a href="cart.html" class="open-file"></a>
-                                            <span
-                                                class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/pngs/8.jpg"></span>
-                                            <div class="wd-50p">
-                                                <h5 class="mb-1">Stylish Rockerz 255 Ear Pods</h5>
-                                                <span>Status: <span class="text-success">In Stock</span></span>
-                                                <p class="fs-13 text-muted mb-0">Quantity: 05</p>
-                                            </div>
-                                            <div class="ms-auto text-end d-flex">
-                                                <span class="fs-16 text-dark d-none d-sm-block px-4">
-                                                    $323
-                                                </span>
-                                                <a href="javascript:void(0)" class="fs-16 btn p-0 cart-trash">
-                                                    <i class="fe fe-trash-2 border text-danger brround d-block p-2"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-item d-flex p-4">
-                                            <a href="cart.html" class="open-file"></a>
-                                            <span
-                                                class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/pngs/1.jpg"></span>
-                                            <div class="wd-50p">
-                                                <h5 class="mb-1">Women Party Wear Dress</h5>
-                                                <span>Status: <span class="text-success">In Stock</span></span>
-                                                <p class="fs-13 text-muted mb-0">Quantity: 05</p>
-                                            </div>
-                                            <div class="ms-auto text-end d-flex">
-                                                <span class="fs-16 text-dark d-none d-sm-block px-4">
-                                                    $867
-                                                </span>
-                                                <a href="javascript:void(0)" class="fs-16 btn p-0 cart-trash">
-                                                    <i class="fe fe-trash-2 border text-danger brround d-block p-2"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-item d-flex p-4">
-                                            <a href="cart.html" class="open-file"></a>
-                                            <span
-                                                class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/pngs/3.jpg"></span>
-                                            <div class="wd-50p">
-                                                <h5 class="mb-1">Running Shoes for men</h5>
-                                                <span>Status: <span class="text-success">In Stock</span></span>
-                                                <p class="fs-13 text-muted mb-0">Quantity: 05</p>
-                                            </div>
-                                            <div class="ms-auto text-end d-flex">
-                                                <span class="fs-16 text-dark d-none d-sm-block px-4">
-                                                    $456
-                                                </span>
-                                                <a href="javascript:void(0)" class="fs-16 btn p-0 cart-trash">
-                                                    <i class="fe fe-trash-2 border text-danger brround d-block p-2"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-divider m-0"></div>
-                                    <div class="dropdown-footer">
-                                        <a class="btn btn-primary btn-pill w-sm btn-sm py-2" href="checkout.html"><i class="fe fe-check-circle"></i> Checkout</a>
-                                        <span class="float-end p-2 fs-17 fw-semibold">Total: $6789</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- CART -->
+
+
                             <div class="dropdown d-flex">
                                 <a class="nav-link icon full-screen-link nav-link-bg">
                                     <i class="fe fe-minimize fullscreen-button"></i>
                                 </a>
                             </div>
                             <!-- FULL-SCREEN -->
-                            <div class="dropdown  d-flex notifications">
+
+                            {{-- <div class="dropdown  d-flex notifications">
                                 <a class="nav-link icon" data-bs-toggle="dropdown"><i
                                         class="fe fe-bell"></i><span class=" pulse"></span>
                                 </a>
@@ -247,9 +124,11 @@
                                         class="dropdown-item text-center p-3 text-muted">View all
                                         Notification</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- NOTIFICATIONS -->
-                            <div class="dropdown  d-flex message">
+
+
+                            {{-- <div class="dropdown  d-flex message">
                                 <a class="nav-link icon text-center" data-bs-toggle="dropdown">
                                     <i class="fe fe-message-square"></i><span class="pulse-danger"></span>
                                 </a>
@@ -340,14 +219,16 @@
                                     <a href="javascript:void(0)" class="dropdown-item text-center p-3 text-muted">See all
                                         Messages</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- MESSAGE-BOX -->
-                            <div class="dropdown d-flex header-settings">
+
+
+                            {{-- <div class="dropdown d-flex header-settings">
                                 <a href="javascript:void(0);" class="nav-link icon"
                                     data-bs-toggle="sidebar-right" data-target=".sidebar-right">
                                     <i class="fe fe-align-right"></i>
                                 </a>
-                            </div>
+                            </div> --}}
                             <!-- SIDE-MENU -->
                             <div class="dropdown d-flex profile-1">
                                 <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
@@ -365,13 +246,13 @@
                                     <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         <i class="dropdown-icon fe fe-user"></i> Profile
                                     </a>
-                                    <a class="dropdown-item" href="email-inbox.html">
+                                    {{-- <a class="dropdown-item" href="email-inbox.html">
                                         <i class="dropdown-icon fe fe-mail"></i> Inbox
                                         <span class="badge bg-danger rounded-pill float-end">5</span>
-                                    </a>
-                                    <a class="dropdown-item" href="lockscreen.html">
+                                    </a> --}}
+                                    {{-- <a class="dropdown-item" href="lockscreen.html">
                                         <i class="dropdown-icon fe fe-lock"></i> Lockscreen
-                                    </a>
+                                    </a> --}}
                                     <form action="{{ route('logout') }}" method="post" id="logout-form">
                                         @csrf
                                         <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit()" href="{{ route('logout') }}">

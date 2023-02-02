@@ -47,7 +47,7 @@
 
                 <div class="col-md-12">
                     <div class="form-check form-switch">
-                        <input class="form-check-input form-control" type="checkbox" value="Active" name="status" role="switch" id="flexSwitchCheckDefault">
+                        <input class="form-check-input form-control" type="checkbox"  name="status" role="switch" id="flexSwitchCheckDefault">
                         <label class="form-label" for="flexSwitchCheckDefault">Status</label>
                     </div>
                 </div>

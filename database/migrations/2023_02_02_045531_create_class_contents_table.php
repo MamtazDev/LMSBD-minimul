@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('batches', function (Blueprint $table) {
+        Schema::create('class_contents', function (Blueprint $table) {
             $table->id();
+            $table->integer('course_id');
+            $table->string('class_video')->nullable();
+            $table->string('class_text')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batches');
+        Schema::dropIfExists('class_contents');
     }
 };

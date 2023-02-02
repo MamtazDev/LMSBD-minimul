@@ -40,7 +40,16 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $student = new Student;
+        $request ->validate([
+            'course_id' => 'required',
+            'student_name' => 'required',
+            'username' => 'required',
+            'student_email' => 'required|email',
+            'student_phone' => 'required',
+            'password' => 'required',
+        ],[
+            'course_id.required' => 'The course field is required',
+        ]);
 
         if($request->file('student_image'))
         {
@@ -52,13 +61,16 @@ class StudentController extends Controller
 
         }
 
+        $student = new Student;
         $student->course_id = $request->course_id;
         $student->student_name = $request->student_name;
         $student->username = $request->username;
         $student->student_email = $request->student_email;
         $student->student_phone = $request->student_phone;
         $student->password = $request->password;
-        $student->student_image = $final_image ?? 'backend/assets/uploads/default.jpg';
+        if(!empty($final_image)){
+            $student->student_image = $final_image;
+        }
         $student->save();
 
         return redirect()->route('student.index')->with('success', 'Student create successfully');
@@ -83,7 +95,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-
+        $student = Student::findOrFail($id);
+        $course_std = Course::latest()->get();
+        return view('layouts.backend.student.student-edit', compact('student', 'course_std'));
     }
 
     /**
@@ -95,7 +109,41 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request ->validate([
+            'course_id' => 'required',
+            'student_name' => 'required',
+            'username' => 'required',
+            'student_email' => 'required|email',
+            'student_phone' => 'required',
+        ],[
+            'course_id.required' => 'The course field is required',
+        ]);
+
+        $student = Student::findOrFail($id);
+
+        if($request->file('student_image'))
+        {
+            if(file_exists($student->student_image)){
+                unlink($student->student_image);
+            }
+            $image = $request->file('student_image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $location = 'backend/assets/uploads/student/';
+            $final_image = $location.$name_gen;
+            Image::make($image)->save($final_image);
+            $student->student_image = $final_image;
+
+        }
+
+        $student->course_id = $request->course_id;
+        $student->student_name = $request->student_name;
+        $student->username = $request->username;
+        $student->student_email = $request->student_email;
+        $student->student_phone = $request->student_phone;
+        $student->password = $request->password;
+        $student->save();
+
+        return redirect()->route('student.index')->with('success', 'Student update successfully');
     }
 
     /**
@@ -107,6 +155,10 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::findOrFail($id);
+        if($student->student_image){
+            unlink($student->student_image);
+        }
+        $student->delete();
         return redirect()->back()->with('success', 'Student delete successfully');
     }
 }

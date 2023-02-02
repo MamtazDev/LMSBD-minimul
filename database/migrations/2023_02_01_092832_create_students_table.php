@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('student_email');
             $table->string('student_phone');
             $table->string('password');
-            $table->string('student_image');
+            $table->string('student_image')->nullable();
             $table->timestamps();
         });
     }
