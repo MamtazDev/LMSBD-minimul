@@ -10,7 +10,7 @@
               <li class="breadcrumb-item active" >Add Class</li>
             </ol>
         </nav>
-        <div class="card p-3 mt-4">
+        <div class="card p-5 mt-4">
             <div class="category_title my-3">
                 <h3>Add Class</h3>
             </div>
@@ -36,15 +36,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Text</span></label>
-                    <input type="text" class="form-control" name="class_text" placeholder="Text">
+                    <label class="form-label">Class Content</span></label>
+                    <textarea class="form-control" id="summernote" name="class_text"  placeholder="Class Content"></textarea>
                 </div>
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input class="btn btn-secondary btn-pill" type="submit" value="Add class">
-                    </div>
+                <div class="form-group">
+                    <input class="btn btn-secondary btn-pill" type="submit" value="Add class">
                 </div>
+
             </form>
         </div>
     </div>

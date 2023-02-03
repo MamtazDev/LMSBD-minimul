@@ -17,7 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('backend') }}/assets/images/brand/favicon.ico" />
 
     <!-- TITLE -->
-    <title>Sash – Bootstrap 5 Admin & Dashboard Template</title>
+    <title>Edit Profile</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('backend') }}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -64,7 +64,7 @@
                         </a>
                         <!-- LOGO -->
                     </div>
-                  
+
                     @include('layouts.backend.inc.sidebar')
 
 
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="text-center chat-image mb-5">
-  
+
                                             <form action="{{ route('profile.image.update') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="old_image" value="{{ Auth::user()->image }}">
@@ -112,9 +112,9 @@
 
                                                     <input onchange="document.getElementById('img').src=window.URL.createObjectURL(this.files[0])" type="file" name="image" class="form-control my-4">
                                                     <input type="submit" value="Upload" class="btn btn-success">
-                                                </div>    
-                                           </form>    
-                                            
+                                                </div>
+                                           </form>
+
 
                                         </div>
                                         <form action="{{ route('profile.password.change') }}" method="post">
@@ -156,7 +156,7 @@
                                                 @enderror
                                             </div>
                                             <div class="card-footer text-end">
-                                                <button class="btn btn-primary">Update Password</Button> 
+                                                <button class="btn btn-primary">Update Password</Button>
                                             </div>
                                         </form>
                                     </div>
@@ -194,7 +194,7 @@
                             </div>
                             <div class="col-xl-8">
                                 <form action="{{ route('profile.edit') }}" method="post" >
-                                    @csrf 
+                                    @csrf
                                     <div class="card">
                                         <div class="card-header">
                                             <h3 class="card-title">Edit Profile</h3>
@@ -239,12 +239,12 @@
                                                     </div><input name="date_of_birth" class="form-control fc-datepicker" placeholder="MM/DD/YYYY" value="{{ Auth::user()->date_of_birth }}" type="text">
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="card-footer text-end">
-                                            <button type="submit" class="btn btn-success my-1">Save</a> 
+                                            <button type="submit" class="btn btn-success my-1">Save</a>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -777,7 +777,7 @@
     <!-- BACK-TO-TOP -->
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-   
+
     <script src="{{ asset('backend') }}/assets/js/jquery.min.js"></script>
 
     <!-- BOOTSTRAP JS -->
@@ -870,11 +870,11 @@
 
     <!-- CUSTOM JS -->
     <script src="{{ asset('backend') }}/assets/js/custom.js"></script>
-    
+
 
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
- 
+
     @if (Session::has('success'))
     <script>
         toastr.success("{!! Session::get('success') !!}")

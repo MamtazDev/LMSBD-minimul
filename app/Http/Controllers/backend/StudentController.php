@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Batch;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class StudentController extends Controller
     public function create()
     {
         $course_std = Course::latest()->get();
-        return view('layouts.backend.student.student-add', compact('course_std'));
+        $batch = Batch::latest()->get();
+        return view('layouts.backend.student.student-add', compact('course_std','batch'));
     }
 
     /**
@@ -42,6 +44,7 @@ class StudentController extends Controller
     {
         $request ->validate([
             'course_id' => 'required',
+            'batch_id' => 'required',
             'student_name' => 'required',
             'username' => 'required',
             'student_email' => 'required|email',
@@ -49,6 +52,7 @@ class StudentController extends Controller
             'password' => 'required',
         ],[
             'course_id.required' => 'The course field is required',
+            'batch_id.required' => 'The batch field is required',
         ]);
 
         if($request->file('student_image'))
@@ -63,6 +67,7 @@ class StudentController extends Controller
 
         $student = new Student;
         $student->course_id = $request->course_id;
+        $student->batch_id = $request->batch_id;
         $student->student_name = $request->student_name;
         $student->username = $request->username;
         $student->student_email = $request->student_email;
@@ -97,7 +102,8 @@ class StudentController extends Controller
     {
         $student = Student::findOrFail($id);
         $course_std = Course::latest()->get();
-        return view('layouts.backend.student.student-edit', compact('student', 'course_std'));
+        $batch = Batch::latest()->get();
+        return view('layouts.backend.student.student-edit', compact('student', 'course_std','batch'));
     }
 
     /**
@@ -111,12 +117,14 @@ class StudentController extends Controller
     {
         $request ->validate([
             'course_id' => 'required',
+            'batch_id' => 'required',
             'student_name' => 'required',
             'username' => 'required',
             'student_email' => 'required|email',
             'student_phone' => 'required',
         ],[
             'course_id.required' => 'The course field is required',
+            'batch_id.required' => 'The course field is required',
         ]);
 
         $student = Student::findOrFail($id);
@@ -132,10 +140,10 @@ class StudentController extends Controller
             $final_image = $location.$name_gen;
             Image::make($image)->save($final_image);
             $student->student_image = $final_image;
-
         }
 
         $student->course_id = $request->course_id;
+        $student->batch_id = $request->batch_id;
         $student->student_name = $request->student_name;
         $student->username = $request->username;
         $student->student_email = $request->student_email;

@@ -10,7 +10,7 @@
               <li class="breadcrumb-item active" aria-current="page">Update Course</li>
             </ol>
         </nav>
-        <div class="card p-3 mt-4">
+        <div class="card p-5 mt-4">
             <div class="category_title my-3">
                 <h3>Update Course</h3>
             </div>
@@ -63,10 +63,8 @@
                     <img width="100px" height="100px" id="img" src="{{ (!empty($course->thumbnail))? url($course->thumbnail):url('backend/assets/uploads/default.jpg') }}">
                 </div>
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input class="btn btn-secondary btn-pill" type="submit" value="Update Course">
-                    </div>
+                <div class="form-group">
+                    <input class="btn btn-secondary btn-pill" type="submit" value="Update Course">
                 </div>
             </form>
         </div>

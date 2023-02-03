@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Class_content;
+use App\Models\Batch;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
-class Class_contentController extends Controller
+class BatchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class Class_contentController extends Controller
      */
     public function index()
     {
-        $class = Class_content::all();
-        return view('layouts.backend.class-content.class-index', compact('class'));
+        $batches = Batch::all();
+        return view('layouts.backend.batch.batch-index', compact('batches'));
     }
 
     /**
@@ -28,7 +28,7 @@ class Class_contentController extends Controller
     public function create()
     {
         $course = Course::latest()->get();
-        return view('layouts.backend.class-content.class-add', compact('course'));
+        return view('layouts.backend.batch.batch-add', compact('course'));
     }
 
     /**
@@ -45,13 +45,12 @@ class Class_contentController extends Controller
             'course_id.required' => 'The course field is required',
         ]);
 
-        $class = new Class_content;
-        $class->course_id = $request->course_id;
-        $class->class_video = $request->class_video;
-        $class->class_text = $request->class_text;
-        $class->save();
+        $batches = new Batch;
+        $batches->course_id =$request->course_id;
+        $batches->batch_name = $request->batch_name;
+        $batches->save();
 
-        return redirect()->route('class-content.index')->with('success', 'Class create successfully');
+        return redirect()->route('batch.index')->with('success', 'Batch create successfully');
     }
 
     /**
@@ -62,9 +61,7 @@ class Class_contentController extends Controller
      */
     public function show($id)
     {
-        $items = Class_content::findOrFail($id);
-        $course = Course::latest()->get();
-        return view('layouts.backend.class-content.class-show', compact('items', 'course'));
+        //
     }
 
     /**
@@ -75,9 +72,9 @@ class Class_contentController extends Controller
      */
     public function edit($id)
     {
-        $class = Class_content::findOrFail($id);
+        $batches = Batch::findOrFail($id);
         $course = Course::latest()->get();
-        return view('layouts.backend.class-content.class-edit', compact('class', 'course'));
+        return view('layouts.backend.batch.batch-edit', compact('batches','course'));
     }
 
     /**
@@ -95,13 +92,12 @@ class Class_contentController extends Controller
             'course_id.required' => 'The course field is required',
         ]);
 
-        $class = Class_content::findOrFail($id);
-        $class->course_id = $request->course_id;
-        $class->class_video = $request->class_video;
-        $class->class_text = $request->class_text;
-        $class->save();
+        $batches = Batch::findOrFail($id);
+        $batches->course_id =$request->course_id;
+        $batches->batch_name = $request->batch_name;
+        $batches->save();
 
-        return redirect()->route('class-content.index')->with('success', 'Class update successfully');
+        return redirect()->route('batch.index')->with('success', 'Batch update successfully');
     }
 
     /**
@@ -112,7 +108,7 @@ class Class_contentController extends Controller
      */
     public function destroy($id)
     {
-        Class_content::findOrFail($id)->delete();
-        return redirect()->back()->with('success', 'Class delete successfully');
+        Batch::findOrFail($id)->delete();
+        return redirect()->back()->with('success', 'Batch delete successfully');
     }
 }

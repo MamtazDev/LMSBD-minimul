@@ -10,13 +10,12 @@
               <li class="breadcrumb-item active" >Add Student</li>
             </ol>
         </nav>
-        <div class="card p-3 mt-4">
+        <div class="card p-5 mt-4">
             <div class="category_title my-3">
                 <h3>Add Student</h3>
             </div>
             <form action="{{ route('student.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-
                 <div class="form-group">
                     <label class="form-label">Course Name<span class="text-danger">*</span></label>
                     <select name="course_id" class="form-control form-select select2" data-bs-placeholder="Select">
@@ -31,16 +30,29 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Student Name<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="student_name" placeholder="Student Name">
-                    @error('course_name')
+                    <label class="form-label">Batch Name<span class="text-danger">*</span></label>
+                    <select name="batch_id" class="form-control form-select select2" data-bs-placeholder="Select">
+                        <option selected="" disabled="">Select Batch</option>
+                        @foreach($batch as $item )
+                            <option value="{{ $item->id }}" >{{ $item->batch_name }}</option>
+                        @endforeach
+                    </select>
+                    @error('batch_id')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">User Name<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="username" placeholder="User Name">
+                    <label class="form-label">Student Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="student_name" placeholder="Student Name">
+                    @error('student_name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Student User Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="username" placeholder="Student User Name">
                     @error('username')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -81,10 +93,8 @@
                     <img width="100px" height="100px" id="img" src="{{ asset('backend/assets/uploads/default.jpg') }}" >
                 </div>
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input class="btn btn-secondary btn-pill" type="submit" value="Add Student">
-                    </div>
+                <div class="form-group">
+                    <input class="btn btn-secondary btn-pill" type="submit" value="Add Student">
                 </div>
             </form>
         </div>

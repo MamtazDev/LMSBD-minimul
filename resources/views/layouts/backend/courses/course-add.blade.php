@@ -10,7 +10,7 @@
               <li class="breadcrumb-item active">Add Course</li>
             </ol>
         </nav>
-        <div class="card p-3 mt-4">
+        <div class="card p-5 mt-4">
             <div class="category_title my-3">
                 <h3>Add Course</h3>
             </div>
@@ -62,10 +62,8 @@
                     <img width="100px" height="100px" id="img" src="{{ url('backend/assets/uploads/default.jpg') }}" >
                 </div>
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input class="btn btn-secondary btn-pill" type="submit" value="Add Course">
-                    </div>
+                <div class="form-group">
+                    <input class="btn btn-secondary btn-pill" type="submit" value="Add Course">
                 </div>
             </form>
         </div>

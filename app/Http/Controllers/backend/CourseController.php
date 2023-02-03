@@ -45,8 +45,6 @@ class CourseController extends Controller
             'start_date' => 'required'
         ]);
 
-        $course = new Course;
-
         if($request->file('thumbnail'))
         {
             $image = $request->file('thumbnail');
@@ -57,6 +55,7 @@ class CourseController extends Controller
 
         }
 
+        $course = new Course;
         $course->course_name = $request->course_name;
         $course->course_duration = $request->course_duration;
         $course->start_date = $request->start_date;
@@ -126,7 +125,6 @@ class CourseController extends Controller
         $course->course_duration = $request->course_duration;
         $course->start_date = $request->start_date;
         $course->status = $request->status;
-
         $course->save();
 
         return redirect()->route('courses.index')->with('success', 'Course update successfully');
@@ -154,4 +152,18 @@ class CourseController extends Controller
         }
 
     }
+
+
+    public function inactive($id) {
+        Course::findOrFail($id)->update(['status' => 'off']);
+        return redirect()->back()->with('success', 'Course Inactive Successfully');
+    }
+
+    public function active($id) {
+        Course::findOrFail($id)->update(['status' => 'on']);
+        return redirect()->back()->with('success', 'Course Active Successfully');
+    }
+
+
+
 }

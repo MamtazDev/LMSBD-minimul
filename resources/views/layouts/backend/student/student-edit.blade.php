@@ -10,7 +10,7 @@
               <li class="breadcrumb-item active" >Edit Student</li>
             </ol>
         </nav>
-        <div class="card p-3 mt-4">
+        <div class="card p-5 mt-4">
             <div class="category_title my-3">
                 <h3>Edit Student</h3>
             </div>
@@ -31,6 +31,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-label">Batch Name<span class="text-danger">*</span></label>
+                    <select name="batch_id" class="form-control form-select select2" data-bs-placeholder="Select">
+                        <option selected="" disabled="">Select Batch</option>
+                        @foreach($batch as $item )
+                            <option value="{{ $item->id }}" {{ $item->id == $student->batch_id ? 'selected': ''}}>{{ $item->batch_name }}</option>
+                        @endforeach
+                    </select>
+                    @error('batch_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label class="form-label">Student Name<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="student_name" value="{{ $student->student_name }}">
                     @error('student_name')
@@ -39,7 +52,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">User Name<span class="text-danger">*</span></label>
+                    <label class="form-label">Student User Name<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="username" value="{{ $student->username }}">
                     @error('username')
                         <span class="text-danger">{{ $message }}</span>
@@ -78,10 +91,8 @@
                     <img width="100px" height="100px" id="img" src="{{ (!empty($student->student_image)) ? asset($student->student_image) : asset('backend/assets/uploads/default.jpg') }}" >
                 </div>
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input class="btn btn-secondary btn-pill" type="submit" value="Update Student">
-                    </div>
+                <div class="form-group">
+                    <input class="btn btn-secondary btn-pill" type="submit" value="Update Student">
                 </div>
             </form>
         </div>

@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Student extends Model
+class Batch extends Model
 {
     use HasFactory;
 
@@ -14,17 +13,11 @@ class Student extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class, 'course_id', 'id');
+        return $this->belongsTo(Course::class,'course_id','id');
     }
 
     public function student()
     {
-       return $this->hasMany(Student::class, 'course_id');
+        return $this->hasMany(Student::class);
     }
-
-    public function batch()
-    {
-        return $this->belongsTo(Batch::class, 'batch_id','id');
-    }
-
 }

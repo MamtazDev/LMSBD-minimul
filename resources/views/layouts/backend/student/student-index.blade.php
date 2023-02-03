@@ -24,11 +24,12 @@
                     <tr>
                         <th scope="col">SL No</th>
                         <th scope="col">Course</th>
+                        <th scope="col">Batch</th>
                         <th scope="col">Student Name</th>
                         <th scope="col">User Name</th>
-                        <th scope="col">Student Email</th>
-                        <th scope="col">Student Phone</th>
-                        <th scope="col">Student Image</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -37,6 +38,7 @@
                         <tr>
                             <td>{{ $loop->index+1 }}</td>
                             <td>{{ $items->course->course_name }}</td>
+                            <td>{{ $items->batch->batch_name }}</td>
                             <td>{{ $items->student_name }}</td>
                             <td>{{ $items->username }}</td>
                             <td>{{ $items->student_email }}</td>

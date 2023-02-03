@@ -19,11 +19,12 @@
                </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
+                <table class="table text-center table-bordered text-nowrap border-bottom" id="basic-datatable">
                     <thead>
                     <tr>
                         <th scope="col">SL No</th>
                         <th scope="col">Course Name</th>
+                        <th scope="col">Classes</th>
                         <th scope="col">Course Duration</th>
                         <th scope="col">Status</th>
                         <th scope="col">Start date</th>
@@ -31,19 +32,34 @@
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
+
                     <tbody>
                         @foreach ($course as $items)
                         <tr>
                             <td>{{ $loop->index+1 }}</td>
-                            <td>{{ $items->course_name }}</td>
+                            <td>{{ $items->course_name }} <span style="color:red">({{ $items->student->count() }} Students)</span></td>
+                            <td>{{ $items->class_content->count() }}</td>
                             <td>{{ $items->course_duration }}</td>
-                            <td>{{ $items->status ?? 'off'}}</td>
+                            <td>
+                                @if ($items->status == 'on')
+                                    <span class="badge bg-success">Active</span>
+                                @else
+                                    <span class="badge bg-info">Inactive</span>
+                                @endif
+
+                            </td>
                             <td>{{ $items->start_date }}</td>
                             <td>
                                 <img width="100px" height="100px" src="{{ (!empty($items->thumbnail)) ? asset($items->thumbnail) : asset('backend/assets/uploads/default.jpg') }}" alt="image">
                             </td>
                             <td>
-                                <a href="{{ route('courses.edit', $items->id) }}" class="btn btn-success">Edit</a>
+                                @if ($items->status == "on")
+                                    <a href="{{ route('course.inactive', $items->id) }}" class="btn btn-info">Inactive</a>
+                                @else
+                                    <a href="{{ route('course.active', $items->id) }}" class="btn btn-success">Active</a>
+                                @endif
+
+                                <a href="{{ route('courses.edit', $items->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{ $items->id }}">Delete</a>
                             </td>
                         </tr>

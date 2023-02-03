@@ -20,4 +20,9 @@ class Course extends Model
     {
        return $this->hasMany(Class_content::class);
     }
+
+    public function batch()
+    {
+       return $this->hasMany(Batch::class);
+    }
 }
