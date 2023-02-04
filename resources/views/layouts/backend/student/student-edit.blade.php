@@ -19,7 +19,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label class="form-label">Course Name<span class="text-danger">*</span></label>
-                    <select name="course_id" class="form-control form-select select2" data-bs-placeholder="Select">
+                    <select name="course_id" id="course_id" class="form-control form-select select2" data-bs-placeholder="Select">
                         <option selected="" disabled="">Select Course</option>
                         @foreach($course_std as $item )
                             <option value="{{ $item->id }}" {{ $item->id == $student->course_id ? 'selected': ''}}>{{ $item->course_name }}</option>
@@ -32,10 +32,12 @@
 
                 <div class="form-group">
                     <label class="form-label">Batch Name<span class="text-danger">*</span></label>
-                    <select name="batch_id" class="form-control form-select select2" data-bs-placeholder="Select">
+                    <select name="batch_id" id="batch_dropdown" class="form-control form-select select2" data-bs-placeholder="Select">
                         <option selected="" disabled="">Select Batch</option>
                         @foreach($batch as $item )
-                            <option value="{{ $item->id }}" {{ $item->id == $student->batch_id ? 'selected': ''}}>{{ $item->batch_name }}</option>
+                            <option value="{{ $item->id }}" {{ $item->id == $student->batch_id ? 'selected': ''}}>
+                                {{ $item->batch_name}}
+                            </option>
                         @endforeach
                     </select>
                     @error('batch_id')
@@ -77,7 +79,7 @@
 
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" value="{{ $student->password }}">
+                    <input type="password" class="form-control" name="password" readonly>
                 </div>
 
 
@@ -99,3 +101,33 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#course_id').change(function(){
+
+                let course_id = $(this).val()
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        url: "{{ route('batch.dropdown') }}",
+                        type: "POST",
+                        data: {
+                            course_id : course_id,
+                        },
+                        success: function(data){
+                            $('#batch_dropdown').html(data)
+                        },
+                    });
+                });
+        });
+
+    </script>
+
+@endsection
+

@@ -32,7 +32,7 @@
                         @foreach ($batches as $batch)
                         <tr>
                             <td>{{ $loop->index+1 }}</td>
-                            <td>{{ $batch->batch_name }}</td>
+                            <td>{{ $batch->batch_name }} <span style="color:red">({{ $batch->student->count() }} Students)</span></td>
                             <td>{{ $batch->course->course_name }}</td>
                             <td>
                                 <a href="{{ route('batch.edit', $batch->id) }}" class="btn btn-success">Edit</a>

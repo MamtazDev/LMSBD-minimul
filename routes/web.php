@@ -9,7 +9,6 @@ use App\Http\Controllers\backend\{
     ProfileController,
     StudentController
 };
-use App\Models\Batch;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -36,6 +35,7 @@ Route::get('courses/active/{id}', [CourseController::class, 'active'])->name('co
 //Student Route
 Route::resource('student', StudentController::class);
 Route::get('student/delete/{id}', [StudentController::class, 'destroy'])->name('student.delete');
+Route::post('student/batch-dropdown', [StudentController::class, 'dropdown'])->name('batch.dropdown');
 
 //Class_content Route
 Route::resource('class-content', Class_contentController::class);
@@ -44,3 +44,5 @@ Route::get('class-content/delete/{id}', [Class_contentController::class, 'destro
 //Batch Route
 Route::resource('batch', BatchController::class);
 Route::get('batch/delete/{id}', [BatchController::class, 'destroy'])->name('batch.delete');
+
+

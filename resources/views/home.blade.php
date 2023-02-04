@@ -22,8 +22,8 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="">Total Student</h6>
-                                <h2 class="mb-0 number-font">{{ count($students) }}</h2>
+                                <h6 class="">Total Courses</h6>
+                                <h2 class="mb-0 number-font">{{ count($courses) }}</h2>
                             </div>
                         </div>
                     </div>
@@ -34,8 +34,8 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="">Total Courses</h6>
-                                <h2 class="mb-0 number-font">{{ count($courses) }}</h2>
+                                <h6 class="">Total Batches</h6>
+                                <h2 class="mb-0 number-font">{{ count($batches) }}</h2>
                             </div>
                         </div>
                     </div>
@@ -53,27 +53,18 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                 <div class="card overflow-hidden">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="">Total Cost</h6>
-                                <h2 class="mb-0 number-font">$59,765</h2>
-                            </div>
-                            <div class="ms-auto">
-                                <div class="chart-wrapper mt-1">
-                                    <canvas id="costchart"
-                                        class="h-8 w-9 chart-dropshadow"></canvas>
-                                </div>
+                                <h6 class="">Total Student</h6>
+                                <h2 class="mb-0 number-font">{{ count($students) }}</h2>
                             </div>
                         </div>
-                        <span class="text-muted fs-12"><span class="text-warning"><i
-                                    class="fe fe-arrow-up-circle text-warning"></i> 0.6%</span>
-                            Last year</span>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>

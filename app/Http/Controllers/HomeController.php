@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
 use App\Models\Class_content;
 use App\Models\Course;
 use App\Models\Student;
@@ -27,8 +28,9 @@ class HomeController extends Controller
     public function index()
     {
         $courses = Course::all();
+        $batches = Batch::all();
         $students = Student::all();
         $class = Class_content::all();
-        return view('home',compact('courses','students','class'));
+        return view('home',compact('courses','students','class','batches'));
     }
 }

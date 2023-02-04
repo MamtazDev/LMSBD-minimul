@@ -7,6 +7,7 @@ use App\Models\Batch;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
 class StudentController extends Controller
@@ -72,7 +73,7 @@ class StudentController extends Controller
         $student->username = $request->username;
         $student->student_email = $request->student_email;
         $student->student_phone = $request->student_phone;
-        $student->password = $request->password;
+        $student->password = Hash::make($request->password);
         if(!empty($final_image)){
             $student->student_image = $final_image;
         }
@@ -148,7 +149,7 @@ class StudentController extends Controller
         $student->username = $request->username;
         $student->student_email = $request->student_email;
         $student->student_phone = $request->student_phone;
-        $student->password = $request->password;
+        // $student->password = Hash::make($request->password);
         $student->save();
 
         return redirect()->route('student.index')->with('success', 'Student update successfully');
@@ -168,5 +169,16 @@ class StudentController extends Controller
         }
         $student->delete();
         return redirect()->back()->with('success', 'Student delete successfully');
+    }
+
+    public function dropdown(Request $request)
+    {
+
+        $show_batch = "<option value>Select Batch</option>";
+        $sub_batch = Batch::where('course_id', $request->course_id)->get(['id','batch_name']);
+        foreach ($sub_batch as $batch) {
+            $show_batch .= "<option value='$batch->id'>$batch->batch_name</option>";
+        }
+        echo $show_batch;
     }
 }
