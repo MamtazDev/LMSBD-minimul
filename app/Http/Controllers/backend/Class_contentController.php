@@ -17,7 +17,11 @@ class Class_contentController extends Controller
     public function index()
     {
         $class = Class_content::all();
+<<<<<<< HEAD
         return view('admin.class-content.class-index', compact('class'));
+=======
+        return view('layouts.backend.class-content.class-index', compact('class'));
+>>>>>>> zerin
     }
 
     /**
@@ -28,7 +32,11 @@ class Class_contentController extends Controller
     public function create()
     {
         $course = Course::latest()->get();
+<<<<<<< HEAD
         return view('admin.class-content.class-add', compact('course'));
+=======
+        return view('layouts.backend.class-content.class-add', compact('course'));
+>>>>>>> zerin
     }
 
     /**
@@ -64,7 +72,11 @@ class Class_contentController extends Controller
     {
         $items = Class_content::findOrFail($id);
         $course = Course::latest()->get();
+<<<<<<< HEAD
         return view('admin.class-content.class-show', compact('items', 'course'));
+=======
+        return view('layouts.backend.class-content.class-show', compact('items', 'course'));
+>>>>>>> zerin
     }
 
     /**
@@ -77,7 +89,11 @@ class Class_contentController extends Controller
     {
         $class = Class_content::findOrFail($id);
         $course = Course::latest()->get();
+<<<<<<< HEAD
         return view('admin.class-content.class-edit', compact('class', 'course'));
+=======
+        return view('layouts.backend.class-content.class-edit', compact('class', 'course'));
+>>>>>>> zerin
     }
 
     /**

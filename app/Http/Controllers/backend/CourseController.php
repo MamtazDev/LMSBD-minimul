@@ -7,7 +7,10 @@ use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
+=======
+>>>>>>> zerin
 
 class CourseController extends Controller
 {
@@ -19,7 +22,11 @@ class CourseController extends Controller
     public function index()
     {
         $course = Course::all();
+<<<<<<< HEAD
         return view('admin.courses.course-index',compact('course'));
+=======
+        return view('layouts.backend.courses.course-index', compact('course'));
+>>>>>>> zerin
     }
 
     /**
@@ -29,7 +36,11 @@ class CourseController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         return view('admin.courses.course-add');
+=======
+        return view('layouts.backend.courses.course-add');
+>>>>>>> zerin
     }
 
     /**
@@ -41,6 +52,7 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+<<<<<<< HEAD
             'course_name' => 'required|unique:courses',
             'course_duration' => 'required',
             'start_date' => 'required',
@@ -50,6 +62,11 @@ class CourseController extends Controller
             'course_name.required' => 'The course name is required',
             'course_name.unique' => 'The course name should be unique',
             'course_short_des.required' => 'The course short description is required',
+=======
+            'course_name' => 'required',
+            'course_duration' => 'required',
+            'start_date' => 'required'
+>>>>>>> zerin
         ]);
 
         if($request->file('thumbnail'))
@@ -64,12 +81,18 @@ class CourseController extends Controller
 
         $course = new Course;
         $course->course_name = $request->course_name;
+<<<<<<< HEAD
         $course->slug = Str::slug($request->course_name);
         $course->course_duration = $request->course_duration;
         $course->start_date = $request->start_date;
         $course->status = $request->status;
         $course->course_short_des = $request->course_short_des;
         $course->course_desceiption = $request->course_desceiption;
+=======
+        $course->course_duration = $request->course_duration;
+        $course->start_date = $request->start_date;
+        $course->status = $request->status;
+>>>>>>> zerin
         if(!empty($final_image)){
             $course->thumbnail = $final_image;
         }
@@ -98,7 +121,11 @@ class CourseController extends Controller
     public function edit($id)
     {
         $course = Course::findOrFail($id);
+<<<<<<< HEAD
         return view('admin.courses.course-edit', Compact('course'));
+=======
+        return view('layouts.backend.courses.course-edit', Compact('course'));
+>>>>>>> zerin
     }
 
     /**
@@ -110,6 +137,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         $course = Course::findOrFail($id);
 
         $request->validate([
@@ -121,6 +149,15 @@ class CourseController extends Controller
             'course_name.unique' => 'The course name should be unique',
         ]);
 
+=======
+        $request->validate([
+            'course_name' => 'required',
+            'course_duration' => 'required',
+            'start_date' => 'required'
+        ]);
+
+        $course = Course::findOrFail($id);
+>>>>>>> zerin
 
         if($request->file('thumbnail'))
         {
@@ -136,12 +173,18 @@ class CourseController extends Controller
         }
 
         $course->course_name = $request->course_name;
+<<<<<<< HEAD
         $course->slug = Str::slug($request->course_name);
         $course->course_duration = $request->course_duration;
         $course->start_date = $request->start_date;
         $course->status = $request->status;
         $course->course_short_des = $request->course_short_des;
         $course->course_desceiption = $request->course_desceiption;
+=======
+        $course->course_duration = $request->course_duration;
+        $course->start_date = $request->start_date;
+        $course->status = $request->status;
+>>>>>>> zerin
         $course->save();
 
         return redirect()->route('courses.index')->with('success', 'Course update successfully');

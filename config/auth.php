@@ -40,11 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+<<<<<<< HEAD
 
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+=======
+>>>>>>> zerin
     ],
 
     /*
@@ -70,11 +73,14 @@ return [
             'model' => App\Models\User::class,
         ],
 
+<<<<<<< HEAD
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
 
+=======
+>>>>>>> zerin
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -103,6 +109,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+<<<<<<< HEAD
 
         'admins' => [
             'provider' => 'admins',
@@ -110,6 +117,8 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+=======
+>>>>>>> zerin
     ],
 
     /*

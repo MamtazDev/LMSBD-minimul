@@ -7,7 +7,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+<<<<<<< HEAD
 use Intervention\Image\Image;
+=======
+use Image;
+>>>>>>> zerin
 
 
 class ProfileController extends Controller
@@ -17,19 +21,26 @@ class ProfileController extends Controller
         return view('layouts.backend.profile.profile-index');
     }
 
+<<<<<<< HEAD
     public function StudentProfile(){
         $student = User::find(Auth::user()->id)->get();
 
         return view('admin.profile.student-profile', compact('student'));
     }
 
+=======
+>>>>>>> zerin
     public function update_image(Request $request)
     {
 
         $image = $request->file('image');
 
         if($image != ""){
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> zerin
             if(Auth::user()->image != "backend/assets/uploads/default.png"){
                 if(file_exists($request->old_image)){
                     unlink($request->old_image);
@@ -46,8 +57,13 @@ class ProfileController extends Controller
         User::findOrFail(Auth::id())->update([
             'image' => $last_image,
         ]);
+<<<<<<< HEAD
 
         return redirect()->back()->with('success', 'Profile Image update success');
+=======
+    
+        return redirect()->back()->with('success', 'Profile Image update success');    
+>>>>>>> zerin
 
     }
 
@@ -63,9 +79,15 @@ class ProfileController extends Controller
         ]);
 
         if(Hash::check($request->current_password, Auth::user()->password)){
+<<<<<<< HEAD
 
             if($request->new_password == $request->confirm_password){
 
+=======
+            
+            if($request->new_password == $request->confirm_password){
+                
+>>>>>>> zerin
                 User::find(Auth::id())->update([
                     'password' => Hash::make($request->new_password),
                 ]);
@@ -84,7 +106,11 @@ class ProfileController extends Controller
 
     public function edit_profile(Request $request)
     {
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> zerin
         User::find(Auth::id())->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -99,3 +125,7 @@ class ProfileController extends Controller
 
 }
 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> zerin

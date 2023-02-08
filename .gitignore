@@ -4,13 +4,22 @@
 /public/storage
 /storage/*.key
 /vendor
+<<<<<<< HEAD
 .env
 .env.backup
+=======
+.env.backup
+.env.production
+>>>>>>> zerin
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 auth.json
 npm-debug.log
 yarn-error.log
+<<<<<<< HEAD
+=======
+/.fleet
+>>>>>>> zerin
 /.idea
 /.vscode

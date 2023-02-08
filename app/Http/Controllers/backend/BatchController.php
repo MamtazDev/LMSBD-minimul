@@ -17,7 +17,11 @@ class BatchController extends Controller
     public function index()
     {
         $batches = Batch::all();
+<<<<<<< HEAD
         return view('admin.batch.batch-index', compact('batches'));
+=======
+        return view('layouts.backend.batch.batch-index', compact('batches'));
+>>>>>>> zerin
     }
 
     /**
@@ -28,7 +32,11 @@ class BatchController extends Controller
     public function create()
     {
         $course = Course::latest()->get();
+<<<<<<< HEAD
         return view('admin.batch.batch-add', compact('course'));
+=======
+        return view('layouts.backend.batch.batch-add', compact('course'));
+>>>>>>> zerin
     }
 
     /**
@@ -74,7 +82,11 @@ class BatchController extends Controller
     {
         $batches = Batch::findOrFail($id);
         $course = Course::latest()->get();
+<<<<<<< HEAD
         return view('admin.batch.batch-edit', compact('batches','course'));
+=======
+        return view('layouts.backend.batch.batch-edit', compact('batches','course'));
+>>>>>>> zerin
     }
 
     /**

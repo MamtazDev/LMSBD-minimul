@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Batch;
 use App\Models\Course;
 use App\Models\Student;
+<<<<<<< HEAD
 use App\Models\User;
+=======
+>>>>>>> zerin
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
@@ -20,8 +23,13 @@ class StudentController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $student = User::all();
         return view('admin.student.student-index', compact('student'));
+=======
+        $student = Student::all();
+        return view('layouts.backend.student.student-index', compact('student'));
+>>>>>>> zerin
     }
 
     /**
@@ -33,7 +41,11 @@ class StudentController extends Controller
     {
         $course_std = Course::latest()->get();
         $batch = Batch::latest()->get();
+<<<<<<< HEAD
         return view('admin.student.student-add', compact('course_std','batch'));
+=======
+        return view('layouts.backend.student.student-add', compact('course_std','batch'));
+>>>>>>> zerin
     }
 
     /**
@@ -44,6 +56,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         // return $request;
         // $request ->validate([
         //     'course_id' => 'required',
@@ -61,6 +74,24 @@ class StudentController extends Controller
         if($request->file('image'))
         {
             $image = $request->file('image');
+=======
+        $request ->validate([
+            'course_id' => 'required',
+            'batch_id' => 'required',
+            'student_name' => 'required',
+            'username' => 'required',
+            'student_email' => 'required|email',
+            'student_phone' => 'required',
+            'password' => 'required',
+        ],[
+            'course_id.required' => 'The course field is required',
+            'batch_id.required' => 'The batch field is required',
+        ]);
+
+        if($request->file('student_image'))
+        {
+            $image = $request->file('student_image');
+>>>>>>> zerin
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             $location = 'backend/assets/uploads/student/';
             $final_image = $location.$name_gen;
@@ -68,12 +99,21 @@ class StudentController extends Controller
 
         }
 
+<<<<<<< HEAD
         $student = new User;
         $student->course_id = $request->course_id;
         $student->batch_id = $request->batch_id;
         $student->name = $request->name;
         $student->username = $request->username;
         $student->email = $request->email;
+=======
+        $student = new Student;
+        $student->course_id = $request->course_id;
+        $student->batch_id = $request->batch_id;
+        $student->student_name = $request->student_name;
+        $student->username = $request->username;
+        $student->student_email = $request->student_email;
+>>>>>>> zerin
         $student->student_phone = $request->student_phone;
         $student->password = Hash::make($request->password);
         if(!empty($final_image)){
@@ -103,10 +143,17 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< HEAD
         $student = User::findOrFail($id);
         $course_std = Course::latest()->get();
         $batch = Batch::latest()->get();
         return view('admin.student.student-edit', compact('student', 'course_std','batch'));
+=======
+        $student = Student::findOrFail($id);
+        $course_std = Course::latest()->get();
+        $batch = Batch::latest()->get();
+        return view('layouts.backend.student.student-edit', compact('student', 'course_std','batch'));
+>>>>>>> zerin
     }
 
     /**
@@ -130,7 +177,11 @@ class StudentController extends Controller
             'batch_id.required' => 'The course field is required',
         ]);
 
+<<<<<<< HEAD
         $student = User::findOrFail($id);
+=======
+        $student = Student::findOrFail($id);
+>>>>>>> zerin
 
         if($request->file('student_image'))
         {
@@ -147,9 +198,15 @@ class StudentController extends Controller
 
         $student->course_id = $request->course_id;
         $student->batch_id = $request->batch_id;
+<<<<<<< HEAD
         $student->name = $request->name;
         $student->username = $request->username;
         $student->email = $request->email;
+=======
+        $student->student_name = $request->student_name;
+        $student->username = $request->username;
+        $student->student_email = $request->student_email;
+>>>>>>> zerin
         $student->student_phone = $request->student_phone;
         // $student->password = Hash::make($request->password);
         $student->save();
@@ -165,7 +222,11 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         $student = User::findOrFail($id);
+=======
+        $student = Student::findOrFail($id);
+>>>>>>> zerin
         if($student->student_image){
             unlink($student->student_image);
         }
@@ -183,6 +244,9 @@ class StudentController extends Controller
         }
         echo $show_batch;
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> zerin
 }

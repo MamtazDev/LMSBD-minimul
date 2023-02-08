@@ -185,7 +185,12 @@ return [
         /*
          * Package Service Providers...
          */
+<<<<<<< HEAD
         Intervention\Image\ImageServiceProvider::class,
+=======
+
+         Intervention\Image\ImageServiceProvider::class,
+>>>>>>> zerin
         /*
          * Application Service Providers...
          */
@@ -194,8 +199,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+<<<<<<< HEAD
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+=======
+>>>>>>> zerin
 
     ],
 

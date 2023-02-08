@@ -18,6 +18,10 @@ class Batch extends Model
 
     public function student()
     {
+<<<<<<< HEAD
         return $this->hasMany(User::class);
+=======
+        return $this->hasMany(Student::class);
+>>>>>>> zerin
     }
 }

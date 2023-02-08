@@ -19,7 +19,11 @@ class Student extends Model
 
     public function student()
     {
+<<<<<<< HEAD
        return $this->hasMany(User::class, 'course_id');
+=======
+       return $this->hasMany(Student::class, 'course_id');
+>>>>>>> zerin
     }
 
     public function batch()
